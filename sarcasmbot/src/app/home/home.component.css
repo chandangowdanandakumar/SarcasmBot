@@ -1,0 +1,13 @@
+.nav {
+    justify-content: space-between;
+}
+
+.h3 {
+    font-family: "Lucida Console";
+}
+
+.btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
