@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class SarcasmbotService {
   constructor(private http: HttpClient) { }
 
-  getSarcasmBotReply(){
-    return this.http.get('http://127.0.0.1:8000/reply/')
+  getSarcasmBotReply(body:any){
+    return this.http.post('https://fe5e-34-83-54-174.ngrok.io/reply/',body)
   }
 }

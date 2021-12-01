@@ -22,7 +22,10 @@ export class ChatbotComponent implements OnInit {
   send() {
     console.log(this.userinput.value)
     this.allmessages.push({ "message": this.userinput.value, "from": "user" })
-    this.botservice.getSarcasmBotReply().subscribe((data: any) => {
+    const body = {
+      "texts": this.userinput.value
+    }
+    this.botservice.getSarcasmBotReply(body).subscribe((data: any) => {
       this.allmessages.push({ "message": data.result, "from": "Bot" })
     })
     this.userinput.reset()
