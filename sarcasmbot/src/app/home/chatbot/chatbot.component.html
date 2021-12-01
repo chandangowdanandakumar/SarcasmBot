@@ -1,17 +1,28 @@
-<div class="chatbox">
-    <div class="messages">
+<div class="container">
+    <div class="row">
+        <button class="btn btn-outline-primary ml-auto" type="button" disabled>Welocome to Sarcasm Bot !!</button>
+    </div>
 
-        <div *ngFor="let message of messages" [class.right]="message.self">
-            {{message.text}}
+    
+    <div class="row">
+        <h4 *ngFor="let msg of allmessages" [ngClass]="msg.from == 'Bot' ? 'bot' : 'user' ">{{msg.message}}</h4>
+    </div>
+    <div class="row">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" [formControl]="userinput" placeholder="Message" aria-label="Message"
+                aria-describedby="Message"(keyup.enter)="send()">
+            <button class="btn btn-outline-primary" type="button" id="sendmessage" (click)="send()">Send</button>
         </div>
+    </div>
 
+    <div class="row">
+        <button class="btn btn-outline-danger ml-auto" type="button" id="sendmessage">End Chat</button>
     </div>
-    <div class="input-container">
-        <input type="text" class="inputtext" (ngModel)="replyMessage">
-        <button class="replyBtn" (click)="reply()">Send</button>
-    </div>
+
+
+
 </div>
-<a class="btn btn-primary" (click)="closeChatbot()">
+<a class="btn btn-primary closebutton" (click)="closeChatbot()">
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-x-lg"
         viewBox="0 0 16 16">
         <path fill-rule="evenodd"

@@ -1,4 +1,4 @@
-.btn {
+.closebutton {
     position: fixed;
     bottom: 40px;
     right: 40px;
@@ -35,4 +35,12 @@
 }
 .input-container button{
     width: 90px;
+}
+
+.bot{
+    text-align: left;
+}
+
+.user {
+    text-align: right;
 }

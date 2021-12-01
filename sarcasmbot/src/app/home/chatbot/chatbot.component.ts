@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { SarcasmbotService } from 'src/app/sarcasmbot.service';
 
 @Component({
   selector: 'app-chatbot',
@@ -7,29 +9,26 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./chatbot.component.css']
 })
 export class ChatbotComponent implements OnInit {
-  messages = [{
-    "text":"Hi How are you?",
-    "self":false
-  },{
-    "text":"I am fine",
-    "self":true
-  }]
+  userinput = new FormControl('');
+  allmessages: { message: string, from: string }[] = [
+    { "message": "Hi, Welcome to Sarcasm Bot", "from": "Bot" }]
+
   replyMessage = "";
-  constructor(public dialogref: MatDialogRef<ChatbotComponent>) { }
+  constructor(public dialogref: MatDialogRef<ChatbotComponent>, public botservice: SarcasmbotService) { }
 
   ngOnInit(): void {
- 
   }
-  reply(){
-    this.messages.push({
-      "text":this.replyMessage,
-      "self":true
+
+  send() {
+    console.log(this.userinput.value)
+    this.allmessages.push({ "message": this.userinput.value, "from": "user" })
+    this.botservice.getSarcasmBotReply().subscribe((data: any) => {
+      this.allmessages.push({ "message": data.result, "from": "Bot" })
     })
-    this.replyMessage = "";
+    this.userinput.reset()
   }
 
-
-  closeChatbot(){
+  closeChatbot() {
     this.dialogref.close()
   }
 
