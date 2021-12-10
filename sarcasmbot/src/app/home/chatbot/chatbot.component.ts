@@ -11,7 +11,7 @@ import { SarcasmbotService } from 'src/app/sarcasmbot.service';
 export class ChatbotComponent implements OnInit {
   userinput = new FormControl('');
   allmessages: { message: string, from: string }[] = [
-    { "message": "Hi, Welcome to Sarcasm Bot", "from": "Bot" }]
+    { "message": "Hi, I'm not great at advice, can I Interest you in Sarcastic comment?", "from": "Bot" }]
 
   replyMessage = "";
   constructor(public dialogref: MatDialogRef<ChatbotComponent>, public botservice: SarcasmbotService) { }
@@ -21,7 +21,14 @@ export class ChatbotComponent implements OnInit {
 
   send() {
     console.log(this.userinput.value)
-    this.allmessages.push({ "message": this.userinput.value, "from": "user" })
+    this.allmessages.push({ "message":this.userinput.value, "from": "user" })
+   
+    // this.allmessages.push({ "message": 'I\'m hungry can you order pizza', "from": "user" })
+    // this.allmessages.push({ "message": 'I\'m Not', "from": "Bot" })
+    // this.allmessages.push({ "message": 'what do you think about singularity?', "from": "user" })
+    // this.allmessages.push({ "message": 'everything are, I\'m not', "from": "Bot" })
+    // this.allmessages.push({ "message": 'why', "from": "user" })
+    // this.allmessages.push({ "message": 'stop asking incomplete', "from": "Bot" })
     const body = {
       "texts": this.userinput.value
     }

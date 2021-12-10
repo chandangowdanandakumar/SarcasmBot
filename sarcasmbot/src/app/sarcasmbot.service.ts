@@ -5,9 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SarcasmbotService {
+  url = 'https://26bf-34-82-25-73.ngrok.io'
   constructor(private http: HttpClient) { }
 
   getSarcasmBotReply(body:any){
-    return this.http.post('https://fe5e-34-83-54-174.ngrok.io/reply/',body)
+    return this.http.post(this.url+'/reply',body)
   }
 }
